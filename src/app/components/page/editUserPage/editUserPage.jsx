@@ -117,6 +117,7 @@ const EditUserPage = () => {
             ...prevState,
             [target.name]: target.value
         }));
+        console.log(target);
     };
     const validate = () => {
         const errors = validator(data, validatorConfig);
@@ -124,8 +125,17 @@ const EditUserPage = () => {
         return Object.keys(errors).length === 0;
     };
     const isValid = Object.keys(errors).length === 0;
+
+    const handleBackToUserPage = () => {
+        const path = history.location.pathname;
+        history.push(path.substring(0, path.length - 4));
+    };
+
     return (
         <div className="container mt-5">
+            <button className="btn btn-primary" onClick={handleBackToUserPage}>
+                Назад
+            </button>
             <div className="row">
                 <div className="col-md-6 offset-md-3 shadow p-4">
                     {!isLoading && Object.keys(professions).length > 0 ? (

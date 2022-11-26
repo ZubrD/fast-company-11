@@ -21,7 +21,7 @@ const UsersListPage = () => {
 
     const handleDelete = (userId) => {
         // setUsers(users.filter((user) => user._id !== userId));
-        console.log(userId);
+        console.log(userId); // Чтобы не ругался eslint
     };
     const handleToggleBookMark = (id) => {
         const newArray = users.map((user) => {
@@ -31,7 +31,7 @@ const UsersListPage = () => {
             return user;
         });
         // setUsers(newArray);
-        console.log(newArray);
+        console.log(newArray); // Чтобы не ругался eslint
     };
 
     useEffect(() => {

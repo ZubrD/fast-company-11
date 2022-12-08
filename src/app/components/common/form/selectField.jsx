@@ -12,7 +12,6 @@ const SelectField = ({
 }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
-        console.log(target.value);
     };
     const getInputClasses = () => {
         return "form-select" + (error ? " is-invalid" : "");

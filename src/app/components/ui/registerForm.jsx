@@ -8,15 +8,16 @@ import CheckBoxField from "../common/form/checkBoxField";
 import { useQualities } from "../../hooks/useQualities";
 import { useProfessions } from "../../hooks/useProfession";
 import { useAuth } from "../../hooks/useAuth";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const RegisterForm = () => {
-    // const history = useHistory();
+    const history = useHistory();
     const [data, setData] = useState({
         email: "",
         password: "",
         profession: "",
         sex: "male",
+        name: "",
         qualities: [],
         licence: false
     });
@@ -47,6 +48,15 @@ const RegisterForm = () => {
             },
             isEmail: {
                 message: "Email введен некорректно"
+            }
+        },
+        name: {
+            isRequired: {
+                message: "Имя обязательно для заполнения"
+            },
+            min: {
+                message: "Имя должно состоять минимум из 3 символов",
+                value: 3
             }
         },
         password: {
@@ -97,7 +107,7 @@ const RegisterForm = () => {
 
         try {
             await signUp(newData);
-            // history.push("/");
+            history.push("/");
         } catch (error) {
             setErrors(error);
         }
@@ -110,6 +120,13 @@ const RegisterForm = () => {
                 value={data.email}
                 onChange={handleChange}
                 error={errors.email}
+            />
+            <TextField
+                label="Имя"
+                name="name"
+                value={data.name}
+                onChange={handleChange}
+                error={errors.name}
             />
             <TextField
                 label="Пароль"

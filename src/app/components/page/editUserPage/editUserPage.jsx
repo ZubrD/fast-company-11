@@ -41,7 +41,7 @@ const EditUserPage = () => {
         value: qual._id,
         color: qual.color
     }));
-    const { createUser } = useAuth();
+    const { updateUserProfile } = useAuth();
 
     useEffect(() => {
         setData((prevState) => ({
@@ -85,7 +85,7 @@ const EditUserPage = () => {
         if (!isValid) return;
 
         try {
-            await createUser({
+            await updateUserProfile({
                 ...data,
                 name: data.name,
                 email: data.email,
